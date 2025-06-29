@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test:unit": "vitest"
   },
   "dependencies": {
     "@nuxt/content": "3.6.1",
@@ -16,7 +17,7 @@
     "@nuxt/icon": "1.14.0",
     "@nuxt/image": "1.10.0",
     "@nuxt/scripts": "0.11.8",
-    "@nuxt/test-utils": "3.19.1",
+    "@nuxt/test-utils": "^3.19.1",
     "@nuxt/ui": "3.2.0",
     "@unhead/vue": "^2.0.3",
     "better-sqlite3": "^12.1.1",
@@ -25,5 +26,11 @@
     "typescript": "^5.6.3",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^18.0.1",
+    "playwright-core": "^1.53.1",
+    "vitest": "^3.2.4"
   }
 }
