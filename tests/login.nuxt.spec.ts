@@ -1,6 +1,7 @@
 // @noErrors
 import { it, expect, describe, vi } from "vitest";
-import { mountSuspended } from "@nuxt/test-utils/runtime";
+import { mockComponent, mountSuspended } from "@nuxt/test-utils/runtime";
+
 import { CustomerLogin } from "#components";
 
 describe("CustomerLogin.vue", () => {
@@ -18,14 +19,14 @@ describe("CustomerLogin.vue", () => {
     expect((input.element as HTMLInputElement).value).toBe("21999999999");
   });
 
-  it("redirect to a whatsapp page on click in submit", async () => {
-    const openSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+  it("submit form after insert number", async () => {
     const component = await mountSuspended(CustomerLogin);
+
     const whatsappNumber = "21999999999";
     const input = component.find('[data-test="whatsapp-input"]');
+    const btn = component.find('[data-test="whatsapp-btn"]');
     await input.setValue(whatsappNumber);
-    const form = component.find('[data-test="whatsapp-form"]');
-    await form.trigger("submit");
-
+    // const form = component.find('[data-test="whatsapp-form"]');
+    await btn.trigger("click");
   });
 });
