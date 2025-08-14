@@ -5,14 +5,12 @@
       <div class="flex items-center gap-2">
         <UButton class="mr-6" label="Esta semana" @click="goToday" />
         <UButton
-         class="text-xl"
+          class="text-xl"
           icon="tabler:circle-arrow-left"
-    
-          @click="goToNextWeek"
+          @click="goToPreviousWeek"
         />
         <UButton
-         class="text-xl"
-      
+          class="text-xl"
           icon="tabler:circle-arrow-right"
           @click="goToNextWeek"
         />
