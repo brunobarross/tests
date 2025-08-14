@@ -21,9 +21,10 @@ const credentials = reactive({
 async function login() {
   try {
     const config = useRuntimeConfig();
-    const response = await $fetch(`${config.public.baseUrl}/authenticate/`, {
+    const response = await $fetch(`${config.public.baseUrl}/authenticate`, {
       method: "POST",
       body: credentials,
+      credentials: "include"
     });
     console.log(response);
   } catch (error) {
