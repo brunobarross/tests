@@ -21,9 +21,5 @@ export default defineNuxtConfig({
       baseUrl: process.env.NUXT_PUBLIC_API_BASE,
     },
 
-    proxy:{
-      "/api/": "http://localhost:8080"
-    }
   },
-  ssr: false
 });

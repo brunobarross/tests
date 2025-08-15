@@ -18,16 +18,13 @@
     </div>
 
     <div class="grid grid-cols-7 gap-2 mt-6">
-      {{ schedules }}
-      <div
+      <ScheduleCalendarCard
         v-for="day of weekDays"
         :key="day?.toISOString()"
         :day="day"
         :selected-date="selectedDate"
         @update-selected-date="onSelectDate($event)"
-      >
-        {{ day }}
-      </div>
+      />
     </div>
   </div>
 </template>
@@ -36,12 +33,10 @@
 import { UButton } from "#components";
 import { addDays, format, startOfWeek } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import type { ScheduleResponse } from "~/types";
 
 const selectedDate = ref<Date>(new Date());
 const currentWeekStart = ref(startOfWeek(new Date(), { weekStartsOn: 0 }));
 const today = ref<Date>(new Date());
-const schedules = ref<ScheduleResponse | null>(null);
 
 const weekDays = computed(() =>
   Array.from({ length: 7 }, (_, i) => {
@@ -74,15 +69,4 @@ function goToNextWeek() {
 function goToday() {
   currentWeekStart.value = startOfWeek(new Date(), { weekStartsOn: 0 });
 }
-
-async function getSchedules() {
-  const response: ScheduleResponse = await $fetch(
-    "http://localhost:8080/api/schedules"
-  );
-  schedules.value = response;
-}
-
-onMounted(() => {
-  getSchedules();
-});
 </script>
